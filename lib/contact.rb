@@ -9,6 +9,7 @@ class Contact
     @company = attributes.fetch(:company)
     @contact_info = []
     @id = @@contacts.length().+1
+    @addresses = []
   end
 
 
@@ -18,6 +19,10 @@ class Contact
 
   define_method(:id) do
     @id
+  end
+
+  define_method(:addresses) do
+    @addresses
   end
 
   define_singleton_method(:clear) do

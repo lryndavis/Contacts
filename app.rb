@@ -36,6 +36,26 @@ get('/contacts/:id') do
   erb(:contact_info)
 end
 
+get('/contacts/:id/address_form') do
+  @contacts = Contact.find(params.fetch('id').to_i())
+  erb(:address_form)
+end
+
+post('/contacts/:id') do
+  @contact = Contact.find(params.fetch('id').to_i())
+  street_address = params.fetch('street_address')
+  #city = params.fetch('city')
+  #state = params.fetch('state')
+  #zip = params.fetch('zip')
+  #address_type = params.fetch('address_type')
+
+  @address = Address.new(:street_address => street_address)
+  #:city => city, :state => state, :zip => zip, :address_type => address_type)
+  @address.save()
+  @contact.addresses().push(@address)
+  @addresses = Address.all()
+  erb(:success)
+end
 # get ('/delete_contact/:id') do
 #   @contacts = Contact.find(params.fetch('id').to_i())
 #   @contacts.delete()
@@ -54,5 +74,5 @@ end
 
 post('/') do
   clear = Contact.clear()
-  erb(:clear)
+  erb(:success)
 end

@@ -2,6 +2,15 @@
 <h1><%= @contacts.last_name() %></h1>
 <h1><%= @contacts.job_title() %></h1>
 <h1><%= @contacts.company() %></h1>
+<h1><% @contacts.addresses().each do |address| %>
+    <%= address.street_address() %>
+<% end %>
+  </h1>
 
+
+<a href="/contacts/<%= @contacts.id %>/address_form"><button class="btn btn-default" type="button">Add Address</button></a>
+
+<a href="/contacts/phone_form"><button class="btn btn-default" type="button">Add Phone Number</button></a>
+<a href="/contacts/email_form"><button class="btn btn-default" type="button">Add Email</button></a>
 
 <a href="/contacts"><button class="btn btn-default" type="button">Go to Contact List</button></a>

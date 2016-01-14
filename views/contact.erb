@@ -6,6 +6,10 @@
     <li><a href="/contacts/<%= contact.id() %>"><%= contact.first_name() %> <%= contact.last_name() %></a></li>
     <% end %>
 </ul>
-
+<br>
+<form class="clear-btn" action="/" method="post">
+       <button type="submit" class="btn btn-danger">Clear Contacts</button>
+     </form>
+<br>
 <a href="/">Return to Main Page</a>
 </div>
