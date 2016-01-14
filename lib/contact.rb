@@ -10,6 +10,8 @@ class Contact
     @contact_info = []
     @id = @@contacts.length().+1
     @addresses = []
+    @emails = []
+    @phones = []
   end
 
 
@@ -23,6 +25,14 @@ class Contact
 
   define_method(:addresses) do
     @addresses
+  end
+
+  define_method(:emails) do
+    @emails
+  end
+
+  define_method(:phones) do
+    @phones
   end
 
   define_singleton_method(:clear) do

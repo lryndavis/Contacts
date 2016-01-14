@@ -1,1 +1,12 @@
-<h1>Email.ERB</h1>
+<h1>Add an email address:</h1>
+
+<form action="/contacts/<%= @contacts.id %>/new_email" method="post">
+
+  <label for="email_address">Email Address:</label>
+  <input type="text" id="email_address" name="email_address">
+
+  <label for="email_type">Email Type:</label>
+  <input type="text" id="email_type" name="email_type">
+
+  <button type="submit">Add Email</button>
+</form>

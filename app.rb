@@ -42,32 +42,49 @@ get('/contacts/:id/address_form') do
 end
 
 post('/contacts/:id') do
-  @contact = Contact.find(params.fetch('id').to_i())
+  @contacts = Contact.find(params.fetch('id').to_i())
   street_address = params.fetch('street_address')
   city = params.fetch('city')
   state = params.fetch('state')
   zip = params.fetch('zip')
   @address = Address.new(:street_address => street_address, :city => city, :state => state, :zip => zip)
   @address.save()
-  @contact.addresses().push(@address)
+  @contacts.addresses().push(@address)
   @addresses = Address.all()
   erb(:success)
 end
-# get ('/delete_contact/:id') do
-#   @contacts = Contact.find(params.fetch('id').to_i())
-#   @contacts.delete()
-#   erb(:success)
-# end
 
-# post('/emails') do
-#   email_address = params.fetch('email_address')
-#   email_type = params.fetch('email_type')
-#   @email = Email.new(email_address, email_type)
-#   @email.save()
-#   @contacts = Contact.find(params.fetch('contact_id').to_i())
-#   @contacts.add_vehicle(@email)
-#   erb(:success)
-# end
+get('/contacts/:id/email_form') do
+  @contacts = Contact.find(params.fetch('id').to_i())
+  erb(:email_form)
+end
+
+ post('/contacts/:id/new_email') do
+   @contacts = Contact.find(params.fetch('id').to_i())
+   email_address = params.fetch('email_address')
+   email_type = params.fetch('email_type')
+   @email = Email.new(:email_address => email_address, :email_type => email_type)
+   @email.save()
+   @contacts.emails().push(@email)
+   @emails = Email.all()
+   erb(:success)
+ end
+
+ get('/contacts/:id/phone_form') do
+   @contacts = Contact.find(params.fetch('id').to_i())
+   erb(:phone_form)
+ end
+
+  post('/contacts/:id/new_phone') do
+    @contacts = Contact.find(params.fetch('id').to_i())
+    phone_number = params.fetch('phone_number')
+    phone_type = params.fetch('phone_type')
+    @phone = Phone.new(:phone_number => phone_number, :phone_type => phone_type)
+    @phone.save()
+    @contacts.phones().push(@phone)
+    @phones = Phone.all()
+    erb(:success)
+  end
 
 post('/') do
   clear = Contact.clear()
