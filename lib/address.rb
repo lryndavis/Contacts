@@ -4,10 +4,9 @@ class Address
 
   define_method(:initialize) do |attributes|
     @street_address = attributes.fetch(:street_address)
-    #@city = attributes.fetch(:city)
-    #@state = attributes.fetch(:state)
-    #@zip = attributes.fetch(:zip)
-    #@address_type = attributes.fetch(:address_type)
+    @city = attributes.fetch(:city)
+    @state = attributes.fetch(:state)
+    @zip = attributes.fetch(:zip)
   end
 
   define_method(:id) do

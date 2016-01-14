@@ -4,6 +4,9 @@
 <h1><%= @contacts.company() %></h1>
 <h1><% @contacts.addresses().each do |address| %>
     <%= address.street_address() %>
+    <%= address.city() %>
+    <%= address.state() %>
+    <%= address.zip() %>
 <% end %>
   </h1>
 

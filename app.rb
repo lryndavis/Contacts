@@ -44,13 +44,10 @@ end
 post('/contacts/:id') do
   @contact = Contact.find(params.fetch('id').to_i())
   street_address = params.fetch('street_address')
-  #city = params.fetch('city')
-  #state = params.fetch('state')
-  #zip = params.fetch('zip')
-  #address_type = params.fetch('address_type')
-
-  @address = Address.new(:street_address => street_address)
-  #:city => city, :state => state, :zip => zip, :address_type => address_type)
+  city = params.fetch('city')
+  state = params.fetch('state')
+  zip = params.fetch('zip')
+  @address = Address.new(:street_address => street_address, :city => city, :state => state, :zip => zip)
   @address.save()
   @contact.addresses().push(@address)
   @addresses = Address.all()
