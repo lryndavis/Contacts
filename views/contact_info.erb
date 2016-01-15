@@ -1,32 +1,40 @@
+<div class="wrapper">
+<h3>First Name:</h3>
 <h1><%= @contacts.first_name() %></h1>
+<h3>Last Name:</h3>
 <h1><%= @contacts.last_name() %></h1>
-<h1><%= @contacts.job_title() %></h1>
-<h1><%= @contacts.company() %></h1>
-<h1>
+<h3>Job Title:</h3>
+<h2><%= @contacts.job_title() %></h2>
+<h3>Company:</h3>
+<h2><%= @contacts.company() %></h2>
+<h4>Address:</h4>
+<h3>
   <% @contacts.addresses().each do |address| %>
     <%= address.street_address() %>
     <%= address.city() %>
     <%= address.state() %>
     <%= address.zip() %>
 <% end %>
-</h1>
-<h1>
+</h3>
+<h4>Email:</h4>
+<h3>
   <% @contacts.emails().each do |email| %>
        <%= email.email_address() %>
        <%= email.email_type() %>
      <% end %>
-</h1>
-<h1>
+</h3>
+<h4>Phone:</h4>
+<h3>
   <% @contacts.phones().each do |phone| %>
        <%= phone.phone_number() %>
        <%= phone.phone_type() %>
      <% end %>
-</h1>
+</h3>
 
-
+<div class="container1">
 <a href="/contacts/<%= @contacts.id %>/address_form"><button class="btn btn-default" type="button">Add Address</button></a>
-
 <a href="/contacts/<%= @contacts.id %>/phone_form"><button class="btn btn-default" type="button">Add Phone Number</button></a>
 <a href="/contacts/<%= @contacts.id %>/email_form"><button class="btn btn-default" type="button">Add Email</button></a>
-<br>
-<a href="/contacts"><button class="btn btn-success" type="button">Go to Contact List</button></a>
+</div>
+<a href="/contacts"><button id= "contact_btn" class="btn btn-success btn-block" type="button">Go to Contact List</button></a>
+</div>

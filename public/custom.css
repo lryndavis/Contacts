@@ -1,0 +1,19 @@
+body {
+  background-color: #d2e5e2;
+  text-align: justify;
+}
+
+.wrapper {
+  padding: 20px;
+  max-width: 400px;
+
+}
+
+#contact_btn {
+  margin-top: 8px;
+
+}
+
+.container1 {
+  margin-top: 20px;
+}
